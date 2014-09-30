@@ -7,6 +7,7 @@ describe Submit do
     @submit = Submit.new
     @submit.link = "http://hoshilab.com"
     @submit.text = "Ruby on Rails web development"
+    @submit.points = 1
   end
 
   it "should have http:// in the link" do
@@ -29,8 +30,15 @@ describe Submit do
     last_response.should be_ok
   end
 
-  #it "should decrement the points" do
+  it "should increment the points by 1" do
+    get '/vote/1'
+    expect(@submit.points).to eql(2)
+  end
 
-  #end
-  
+  it "should decrement the points by 1" do
+    get '/downvote/1' 
+    expect(@submit.points).to eql(0)
+  end
+
+ 
 end

@@ -92,7 +92,18 @@ get '/vote/:id' do
   redirect '/'
 end
 
+get '/downvote/:id' do
+  @submit = Submit.find(params[:id])
+
+  @submit.decrement!(:points)
+  redirect '/'
+end
+
 private
 def increment
   updates_attributes(:points => points + 1)
+end
+
+def decrement
+  updates_attributes(:points => points - 1)
 end

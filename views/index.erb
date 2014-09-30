@@ -3,7 +3,7 @@
     <ul>
     <% @submit.each do |submit| %>
       <li><a href="<%= submit.link %>"><%= submit.text %></a></li>
-      <li><a href="/vote/<%= submit.id %>">&uarr;</a>
+      <li><a href="/vote/<%= submit.id %>">&uarr;</a> <a href="/downvote/<%= submit.id %>">&darr;</a>
       <span class="user_info"><%= submit.points %> points by <%= submit.user.username %> <%= submit.created_at.strftime("%d %b") %></span></li>
     <% end %>
   </ul>
