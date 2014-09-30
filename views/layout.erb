@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <html>
+    <title>Ironhack hacker news clone in Sinatra</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <header>
+      <h1>Ironhack Hacker news</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a> </li>
+          <% if is_logged_in?%>
+            <% if user_name? %>
+              <%= @user.username %>
+            <% end %>
+            <li><a href="/submit">Submit</a></li>
+            <li><a href="/logout">Logout</a></li>
+
+          <% else %>
+            <li><a href="/submit">Submit</a></li>
+            <li><a href="/new_user">Create new user</a></li>
+            <li><a href="/login">Login</a></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+      <%= yield %>
+    </section>
+    
+
+  </body>
+</html>

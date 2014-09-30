@@ -1,0 +1,16 @@
+<% if is_logged_in? %>
+<article class="post">
+  <h2>Submit</h2>
+
+  <form action="/submit" method="post">
+    <label>link</label>
+    <input name="link" placeholder="use always http://"><br/>
+    <label>title</label>
+    <textarea name="text"></textarea><br/>
+
+    <input type="submit" value="Submit">
+  </form>
+</article>
+<% else %>
+  <P>You have to login to submit links</p>
+<% end %>
