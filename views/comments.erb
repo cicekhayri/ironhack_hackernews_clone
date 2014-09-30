@@ -1,0 +1,21 @@
+<article class="post">
+  <p><%= @submit.text %><br/>
+   
+    <span class="user_info"><%= @submit.points %> points by <%= @submit.user.username %> <%= @submit.created_at.strftime("%d %b") %>
+  </p>
+
+  <form action="/comments/<%= @submit.id %>" method="post">
+    <textarea name="body"></textarea><br/>
+    <input type="submit">
+  </form>
+
+
+  <br/><br/>
+
+  <ul class="comments">
+    <% @comment.each do |comment| %>
+      <li><%= comment.body %></li>
+    <% end %>
+  </ul>
+
+</article>

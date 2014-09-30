@@ -13,6 +13,7 @@ class Schema < ActiveRecord::Migration
       t.string :link
       t.string :text
       t.integer :points
+
       t.timestamps
     end 
 
@@ -21,6 +22,14 @@ class Schema < ActiveRecord::Migration
       t.string :password
       add_reference :submits, :user, index: true
 
+      t.timestamps
+    end
+
+    create_table :comments do |t|
+      t.text :body
+      t.references :submit
+      add_reference :submits, :comment, index: true
+      
       t.timestamps
     end
 

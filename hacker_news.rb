@@ -1,7 +1,8 @@
-require 'pry'
 require_relative 'models/models'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'digest/md5'
+
 
 configure do
   enable :sessions
@@ -98,6 +99,29 @@ get '/downvote/:id' do
   @submit.decrement!(:points)
   redirect '/'
 end
+
+get '/comments/:id' do
+  @submit = Submit.find(params[:id])
+  @comment = Comment.where(:submit_id => params[:id]) 
+
+  erb :comments
+end
+
+post '/comments/:id' do
+  @comment = Comment.new
+  @comment.body = params[:body]
+  submit = Submit.find_by(params[:id])
+  @comment.submit_id = submit.id
+
+  if @comment.save
+    redirect '/'
+  else
+    redirect '/'
+  end
+  
+end
+
+
 
 private
 def increment

@@ -4,7 +4,9 @@
     <% @submit.each do |submit| %>
       <li><a href="<%= submit.link %>"><%= submit.text %></a></li>
       <li><a href="/vote/<%= submit.id %>">&uarr;</a> <a href="/downvote/<%= submit.id %>">&darr;</a>
-      <span class="user_info"><%= submit.points %> points by <%= submit.user.username %> <%= submit.created_at.strftime("%d %b") %></span></li>
+      <span class="user_info"><%= submit.points %> points by <%= submit.user.username %> <%= submit.created_at.strftime("%d %b") %>
+      | <%= submit.comments.count %> <a href="/comments/<%= submit.id %>">comments</a>
+      </span></li>
     <% end %>
   </ul>
 </div>

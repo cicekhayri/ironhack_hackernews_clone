@@ -43,6 +43,10 @@ article ul {
   list-style: none;
 }
 
+article li:nth-child(3) {
+  padding-top: 10px;
+}
+
 article a {
   color: #333;
   font-size: 14px;
@@ -53,5 +57,16 @@ article a {
   font-size: 12px;
   color: #828282;
 }
+.user_info a {
+  font-size: 12px;
+  color: #828282;
+}
 
 
+.comments {
+  list-style: none;
+}
+textarea {
+  width: 300px;
+  height: 100px;
+}

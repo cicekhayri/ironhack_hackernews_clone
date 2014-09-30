@@ -10,13 +10,19 @@ class User < ActiveRecord::Base
   has_many :submits
 
   validates :username, presence: true, uniqueness: true
-  validates :password, presence: true, length: { in: 8..20 }
+  #validates :password, presence: true, length: { in: 8..20 }
 end
 
 
 class Submit < ActiveRecord::Base
   belongs_to :user
+  has_many :comments
 
   validates :link, presence: true
   validates :text, presence: true
+end
+
+class Comment < ActiveRecord::Base
+  belongs_to :submit
+
 end
